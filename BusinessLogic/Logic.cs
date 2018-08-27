@@ -25,5 +25,15 @@ namespace BusinessLogic
             return myCustomers; 
         }
 
+        public static bool AddCustomer(CustomerBLL customer)
+        {
+            var myCustomer = new Customer();
+            myCustomer.Name = customer.Name;
+            myCustomer.Age = customer.Age;
+            myCustomer.Balance = customer.Balance;
+            var saved = Util.AddNewCustomer(myCustomer);
+            return saved;
+        }
+
     }
 }
