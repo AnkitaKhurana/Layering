@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLogic;
+using BusinessLogic.DataModels;
 
 namespace MVC.Controllers
 {
@@ -36,28 +37,26 @@ namespace MVC.Controllers
         //    return View(customer);
         //}
 
-        //// GET: Customers/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Customers/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         //// POST: Customers/Create
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Name,Age,Balance")] Customer customer)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Customers.Add(customer);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(customer);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CustomerBLL customer)
+        {
+            if (ModelState.IsValid)
+            {
+                Logic.AddCustomer(customer);
+                return RedirectToAction("Index");
+            }
+            return View(customer);
+        }
 
         //// GET: Customers/Edit/5
         //public ActionResult Edit(int? id)

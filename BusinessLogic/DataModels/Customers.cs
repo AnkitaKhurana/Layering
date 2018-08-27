@@ -8,5 +8,9 @@ namespace BusinessLogic.DataModels
     public class Customers
     {
         public List<Customer> AllCustomers;
+        public Customers()
+        {
+            AllCustomers = new List<Customer>();
+        }
     }
 }
