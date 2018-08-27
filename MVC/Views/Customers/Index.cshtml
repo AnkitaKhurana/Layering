@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MVC.Models.Customer>
+﻿@using BusinessLogic;
+@model BusinessLogic.DataModels.Customers
 
 @{
     ViewBag.Title = "Index";
@@ -12,18 +13,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.AllCustomers[0].Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Age)
+            @Html.DisplayNameFor(model => model.AllCustomers[0].Age)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Balance)
+            @Html.DisplayNameFor(model => model.AllCustomers[0].Balance)
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@if (Model.AllCustomers != null) { 
+foreach (var item in Model.AllCustomers) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -41,5 +42,5 @@
         </td>
     </tr>
 }
-
+    }
 </table>
