@@ -14,5 +14,19 @@ namespace DataAccessLayer
             var list = db.Customers.ToList();
             return list;
         }
+
+        public static bool AddNewCustomer(Customer customer)
+        {
+            try
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
