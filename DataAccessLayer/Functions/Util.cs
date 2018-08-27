@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer
 {
-    public class Util 
+    public static class Util 
     {
         private static CustomerContext db = new CustomerContext();
 
