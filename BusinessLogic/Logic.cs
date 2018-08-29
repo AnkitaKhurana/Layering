@@ -19,7 +19,6 @@ namespace BusinessLogic
             var list = Util.GetAllCustomers();
             foreach (var c in Util.GetAllCustomers())
             {
-
                 myCustomers.AllCustomers.Add(c);
             }
             return myCustomers; 
@@ -35,5 +34,24 @@ namespace BusinessLogic
             return saved;
         }
 
+        public static bool EditCustomerBLL(CustomerBLL customer)
+        {
+            var myCustomer = new Customer();
+            myCustomer.Name = customer.Name;
+            myCustomer.Age = customer.Age;
+            myCustomer.Id = customer.Id;
+            var saved = Util.EditCustomer(myCustomer);
+            return saved;
+        }
+        public static CustomerBLL Find(int? id)
+        {
+            var myCustomer =  Util.FindCustomer(id);
+            var returnCustomer = new CustomerBLL();
+            returnCustomer.Age = myCustomer.Age;
+            returnCustomer.Name = myCustomer.Name;
+            returnCustomer.Id = myCustomer.Id;
+            returnCustomer.Balance = myCustomer.Balance;
+            return returnCustomer;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Entity.Migrations;
 
 namespace DataAccessLayer
 {
@@ -27,6 +28,28 @@ namespace DataAccessLayer
                 return false;
             }
             return true;
+        }
+        public static bool EditCustomer(Customer customer)
+        {
+            try
+            {
+                var std = db.Customers.Find(customer.Id);
+                std.Name = customer.Name;
+                std.Age = customer.Age;
+                db.SaveChanges();
+                //db.Entry(customer).State = EntityState.Modified;
+                //db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static Customer FindCustomer(int? id)
+        {
+            return db.Customers.Find(id);
         }
     }
 }
